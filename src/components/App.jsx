@@ -1,31 +1,24 @@
 import React, { Component } from 'react';
 import { Form, FormControl, Button } from 'react-bootstrap';
-import './App.css';
-import AgeStats from './AgeStats.js';
+import '../styles/App.css';
+import AgeStats from './AgeStats.jsx';
 
 class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            anniversary: ''
+            anniversary: new Date().toString()
         }
+
+        this.changeAnniversary = this.changeAnniversary.bind(this);
     }
 
-    printToday() {
-        console.log(this.state.today);
-    }
-
-    changeBirthday(e) {
-        this.setState({
-            anniversary: e.target.value
-        });
-
+    changeAnniversary(e) {
         console.log(this.state);
     }
     
     render() {
-        this.printToday();
         return(
             <div className="App">
                 <Form inline>
@@ -35,7 +28,7 @@ class App extends Component {
                         onChange={ event => this.setState({ anniversary: event.target.value}) }
                     ></FormControl>
                     {' '}
-                    <Button onClick={() => this.changeBirthday(this.state.anniversary)}>Submit</Button>
+                    <Button onClick={() => this.changeAnniversary()}>Submit</Button>
                     <AgeStats anniversary={this.state.anniversary} />
                 </Form>
             </div>
