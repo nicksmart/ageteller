@@ -8,29 +8,35 @@ class App extends Component {
         super(props);
 
         this.state = {
-            date: '',
-            birthday: ''
+            anniversary: ''
         }
     }
 
-    changeBirthday() {
+    printToday() {
+        console.log(this.state.today);
+    }
+
+    changeBirthday(e) {
         this.setState({
-            birthday: this.state.date
+            anniversary: e.target.value
         });
+
+        console.log(this.state);
     }
     
-    render(){
+    render() {
+        this.printToday();
         return(
             <div className="App">
                 <Form inline>
-                    <h2>Input your birthday!</h2>
+                    <h2>Input your anniversary!</h2>
                     <FormControl 
                         type="date"
-                        onChange={ event => this.setState({ date: event.target.value}) }
+                        onChange={ event => this.setState({ anniversary: event.target.value}) }
                     ></FormControl>
                     {' '}
-                    <Button onClick={() => this.changeBirthday()}>Submit</Button>
-                    <AgeStats birthday={this.state.birthday} />
+                    <Button onClick={() => this.changeBirthday(this.state.anniversary)}>Submit</Button>
+                    <AgeStats anniversary={this.state.anniversary} />
                 </Form>
             </div>
         );
