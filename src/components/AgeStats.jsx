@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TruffleShuffle from '../assets/truffleshuffle.gif';
 
 class AgeStats extends Component {
     calculateTimeSinceAnniversary(date) {
@@ -23,6 +24,7 @@ class AgeStats extends Component {
             <div>
                 <h3>{this.props.anniversary}</h3>
                 <h4>Congrats on {this.calculateTimeSinceAnniversary(this.props.anniversary)}!</h4>
+                <img src={TruffleShuffle} alt="Truffle Shuffle gif" className="truffle-shuffle-gif" />
             </div>
         );
     }
